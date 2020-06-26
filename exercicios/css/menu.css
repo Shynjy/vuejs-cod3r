@@ -7,6 +7,11 @@ body {
     text-align: center;
 }
 
+.menu-principal .nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .menu-principal h1 {
     background: #333;
     color: #fff;
@@ -16,7 +21,8 @@ body {
 }
 
 .menu-principal nav {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     min-width: 198px;
 }

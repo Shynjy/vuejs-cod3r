@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Eventos</title>
     <link rel="stylesheet" href="/css/estilo.css">
     <script src="/js/vue.min.js"></script>
 </head>
+
 <body class="exercicio">
     <div id="app">
         <p>{{contador}}</p>
@@ -17,16 +19,19 @@
             Coordenadas: {{x}} e {{y}}
             <span @mousemove.stop>Aqui não</span>
         </p>
+        <p>Aperte ENTER no campo de input</p>
         <input type="text" @keyup.enter="alerta">
     </div>
 
     <script>
         new Vue({
             el: '#app',
-            data: {
-                x: 0,
-                y: 0,
-                contador: 0
+            data: function () {
+                return {
+                    x: 0,
+                    y: 0,
+                    contador: 0
+                }
             },
             methods: {
                 add() {
@@ -43,4 +48,5 @@
         })
     </script>
 </body>
+
 </html>

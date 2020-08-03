@@ -1,4 +1,4 @@
-# calculator
+# Monty Hall
 
 ## Project setup
 ```

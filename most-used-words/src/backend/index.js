@@ -1,11 +1,13 @@
 const { ipcMain } = require('electron')
 
-ipcMain.on('process-subtitles', (event, paths) => {
-    // console.log(paths)
+const pathsToRows = require('./pathsToRows')
+const prepareData = require('./prepareData')
+const groupWords = require('./groupWords')
 
-    event.reply('process-subtitles', [
-        { name: "you", amount: 900 },
-        { name: "he", amount: 850 },
-        { name: "i", amount: 1234 },
-    ])
+ipcMain.on('process-subtitles', (event, paths) => {
+
+    pathsToRows(paths)
+        .then(rows => prepareData(rows))
+        .then(words => groupWords(words))
+        .then(groupWords => event.reply('process-subtitles', groupWords))
 })

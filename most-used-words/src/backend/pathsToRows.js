@@ -1,14 +1,15 @@
 const fs = require('fs')
-const { resolve } = require('path')
-const { rejects } = require('assert')
 
 module.exports = paths => {
-    return new Promise((resolve, rejects) => {
+    return new Promise((resolver, reject) => {
         try {
             const rows = paths
-                .map()
+                .map(path => fs.readFileSync(path).toString('utf8'))
+                .reduce((fullText, fileText) => `${fullText}\n${fileText}`)
+                .split('\n')
+            resolver(rows)
         } catch(e) {
-            rejects(e)
+            reject(e)
         }
     })
 }
